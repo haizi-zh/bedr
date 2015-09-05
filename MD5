@@ -1,6 +1,6 @@
-84c2eb9d8ba420a6e2c4bdfb1eece36b *DESCRIPTION
+ab291c292bd5da808741a11aff0acc95 *DESCRIPTION
 c74d90dacf720e0b3a40bef80ce6bba2 *NAMESPACE
-21c65dc24b741ed55c7671d78cb8c1d4 *NEWS
+aa1a31f4fc7b2425c995eb78b41f8fa3 *NEWS
 835a32b1e02088e593c4fae4a5ff7049 *R/bed2index.R
 4313784e41b22831997fa26155365e88 *R/bed2vcf.R
 e0ffeb960ffce881dac2d1f9576dfede *R/bedr.R
@@ -9,7 +9,7 @@ e0ffeb960ffce881dac2d1f9576dfede *R/bedr.R
 666e44058d6990b5c5c2d593f7ee0600 *R/bedr.merge.region.R
 34bb496b0c0eb266faf17642811b5b77 *R/bedr.plot.region.R
 27a32b302fc96749d867940d76a0fdce *R/bedr.setup.R
-ed997c2fe785f20d2924245504db9404 *R/bedr.sort.region.R
+2109fe96eeb907a02d5ee638dbf5ea9c *R/bedr.sort.region.R
 2c9245df0718627fad06b48d2f9566c2 *R/bedr.subtract.region.R
 8bacc23bf3605189651e8576c5b0ecf0 *R/catv.R
 88ab5e050f06ee5573a994df44aa5993 *R/check.binary.R
@@ -53,7 +53,7 @@ ca8a9930ad8ad767857b93022a60919a *build/vignette.rds
 c378a36f225925bcf366025e613b8344 *inst/config/config.yaml
 9bd371d79a527c64831a11c394e2dbde *inst/doc/Using-bedr.R
 e4abef96a8de82a1e0689e5b26fd79dc *inst/doc/Using-bedr.Rmd
-566a6cbcc022a2dae9ea298375f841e6 *inst/doc/Using-bedr.html
+3a634d03ab7ce3f984d6abf25bb2143e *inst/doc/Using-bedr.html
 397208cec943e7911287c9b16aa725c9 *inst/extdata/CNA.segmented.txt.gz
 f1a680480eea1bfe29aabaaec9feb0f7 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz
 4f5c3acf2bd8aaa6ce8bd3e6039dcf10 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz.tbi

@@ -1,6 +1,6 @@
-ab291c292bd5da808741a11aff0acc95 *DESCRIPTION
-c74d90dacf720e0b3a40bef80ce6bba2 *NAMESPACE
-aa1a31f4fc7b2425c995eb78b41f8fa3 *NEWS
+caa7ff9b2e545a3604bc152e01e6cd56 *DESCRIPTION
+334204b2dfeb965f5cd4747101ace7ee *NAMESPACE
+91569cc253d09372a5429c9eb794467c *NEWS
 835a32b1e02088e593c4fae4a5ff7049 *R/bed2index.R
 4313784e41b22831997fa26155365e88 *R/bed2vcf.R
 e0ffeb960ffce881dac2d1f9576dfede *R/bedr.R
@@ -39,7 +39,7 @@ f9092a2ee436c430df8cdc35227baaa2 *R/order.region.R
 add2b783d7eeeb7179dbead846d7099a *R/permute.region.R
 62aefdd325bbb621d04541c6b3fbd552 *R/process.input.R
 bd5daab774696d41e3b2a4fd6ec61a26 *R/query.ucsc.R
-a13d382de607f38f5425370718d95376 *R/read.vcf.R
+dbc62b6a82364cd4b8ca6bacc32cfe48 *R/read.vcf.R
 1ff2cb13175276d3fe469ab38f6a03eb *R/reldist.R
 0bc53afd954969a3bd3725b3563ab29e *R/size.region.R
 c3b392edc0537c163e3bdd67eacf8762 *R/snm.R
@@ -53,7 +53,7 @@ ca8a9930ad8ad767857b93022a60919a *build/vignette.rds
 c378a36f225925bcf366025e613b8344 *inst/config/config.yaml
 9bd371d79a527c64831a11c394e2dbde *inst/doc/Using-bedr.R
 e4abef96a8de82a1e0689e5b26fd79dc *inst/doc/Using-bedr.Rmd
-3a634d03ab7ce3f984d6abf25bb2143e *inst/doc/Using-bedr.html
+7954af11e4925d6528eb4eab92a75511 *inst/doc/Using-bedr.html
 397208cec943e7911287c9b16aa725c9 *inst/extdata/CNA.segmented.txt.gz
 f1a680480eea1bfe29aabaaec9feb0f7 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz
 4f5c3acf2bd8aaa6ce8bd3e6039dcf10 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz.tbi
@@ -103,7 +103,7 @@ d2353790a1ac154f9be67a491ce46a41 *man/df2list.Rd
 a9f9f0e2527fdfbb4df55e269f45eff9 *man/download.datasets.Rd
 6f59f6222a6e41731e0af5bb28aba97b *man/flank.region.Rd
 d2129ac26b067b2569ce6e080c423c7a *man/get.chr.length.Rd
-3b04bcab53295ecc1cfde43c09322558 *man/get.example.regions.Rd
+4b1e0518782e855c70744c3a006d2305 *man/get.example.regions.Rd
 baf715abd2cc36108d30a21c15a035f1 *man/get.fasta.Rd
 7add1c74378d7e4bf616872bedd661c3 *man/get.random.regions.Rd
 79b56f9065022eeb566d08f9ad08857e *man/grow.region.Rd

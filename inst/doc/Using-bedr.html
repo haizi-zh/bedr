@@ -17,7 +17,7 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -53,7 +53,29 @@ code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
 code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -75,8 +97,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="authors-daryl-waggott-syed-haider-emilie-lalonde-clement-fung-paul-c.-boutros" class="section level3">
 <h3>Author(s): Daryl Waggott, Syed Haider, Emilie Lalonde, Clement Fung, Paul C. Boutros</h3>
 </div>
-<div id="dated-2017-10-12" class="section level3">
-<h3>Dated: 2017-10-12</h3>
+<div id="dated-2019-01-12" class="section level3">
+<h3>Dated: 2019-01-12</h3>
 </div>
 </div>
 <div id="table-of-contents" class="section level2">
@@ -151,7 +173,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>## 
 ## 
 ## ######################
-## #### bedr v1.0.4 ####
+## #### bedr v1.0.6 ####
 ## ######################
 ## 
 ## checking binary availability...
@@ -160,7 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   * Checking path for bedops... PASS
 ##     /usr/local/bin/bedops
 ##   * Checking path for tabix... PASS
-##     /Users/shaider/Desktop/phd_work/SW/tabix-0.2.6/tabix
+##     /usr/local/bin/tabix
 ## tests and examples will be skipped on R CMD check if binaries are missing</code></pre>
 <p>N.B. Log info printed through <code>verbose = T</code> (default, in almost all bedr methods) should be carefully assessed. Often, status=FAIL may just highlight a potential problem, and hence code continues to execute without a graceful failure. Therefore, please do read the log messages carefully.</p>
 </div>
@@ -267,7 +289,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object is not *lexographically* ordered!
 ##    This can cause unexpected results for some set operations.
 ##    try: x &lt;- bedr.sort.region(x)
-##    bedtools sort -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e7d38f4cd.bed 
+##    bedtools sort -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b59043160f20.bed 
 ##  REGION a:  chr1:10-100 chr1:101-200 chr1:200-210 chr1:211-212 chr10:50-100 chr2:10-50 chr2:40-60 chr20:1-5 
 ##  REGION b:  chr1:10-100 chr1:101-200 chr1:200-210 chr1:211-212 chr2:10-50 chr2:40-60 chr10:50-100 chr20:1-5 
 ##  REGION c:  chr1:1-10 chr1:111-250 chr1:2000-2010 chr10:100-150 chr2:1-5 chr2:40-60 chr20:6-10</code></pre>
@@ -311,7 +333,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## CONVERT TO BED
 ##  * Checking input type... PASS
 ##    Input is in index format
-##    bedtools merge -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e5bbd5e69.bed -d 0 
+##    bedtools merge -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b59065c8756f.bed -d 0 
 ##  * Collapsing 8 --&gt; 6 regions... NOTE
 ##  * Processing input (1): i
 ## CONVERT TO BED
@@ -324,7 +346,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check for larger start position... PASS.
 ##  * Check if zero based... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools merge -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e4c80e17e.bed 
+##    bedtools merge -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b590647f1c2f.bed 
 ##  REGION a:  chr1:10-100 chr1:101-210 chr1:211-212 chr10:50-100 chr2:10-60 chr20:1-5 
 ##  REGION b:  chr1:1-10 chr1:111-250 chr1:2000-2010 chr10:100-150 chr2:1-5 chr2:40-60 chr20:6-10</code></pre>
 </div>
@@ -374,7 +396,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools subtract -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e34e3825d.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e68e1834a.bed   -A 
+##    bedtools subtract -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b590337f91c6.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b59078872c17.bed   -A 
 ##  * Processing input (1): a
 ## CONVERT TO BED
 ##  * Checking input type... PASS
@@ -399,7 +421,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools subtract -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e5483a43c.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e3cae885e.bed -A
+##    bedtools subtract -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5907bb72893.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5906c140df5.bed -A
 ##  REGION a - sub1:  chr1:10-100 chr10:50-100 chr20:1-5 
 ##  REGION a - sub2:  chr1:10-100 chr10:50-100 chr20:1-5</code></pre>
 </div>
@@ -471,7 +493,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e43f52c68.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e4659e9c0.bed -loj -sorted
+##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b590747a33d5.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5901baed66d.bed -loj -sorted
 ##  * Processing input (1): a
 ## CONVERT TO BED
 ##  * Checking input type... PASS
@@ -499,7 +521,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e58ac869c.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e11338d98.bed -loj -sorted
+##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5902c1ad88f.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5907bce1192.bed -loj -sorted
 ## JOINING
 ## SORTING
 ## VALIDATE REGIONS
@@ -545,7 +567,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools multiinter -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e51740ba1.bed /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/_704e70d0f218.bed /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/_704e682beefc.bed  -names  a b c -g /private/var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T/RtmpYbLH0S/Rinst70185b67e47e/bedr/genomes/human.hg19.genome -filler . 
+##    bedtools multiinter -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b59031a43713.bed /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/_b590d4ad839.bed /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/_b590881c970.bed  -names  a b c -g /private/var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T/RtmpgKBgGy/Rinstb54bec8a1d4/bedr/genomes/human.hg19.genome -filler . 
 ##  REGION a intersect: 
 ##          index   V4  V5  V6
 ## 1  chr1:10-100    .  -1  -1
@@ -565,21 +587,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 6              chr1:211-212          2   a,b 1 1 0
 ## 7              chr1:212-250          1     b 0 1 0
 ## 8            chr1:2000-2010          1     b 0 1 0
-## 9    chr1:11148926-11167483          1     c 0 0 1
-## 10   chr1:12181598-12202419          1     c 0 0 1
-## 11   chr1:14993658-15017661          1     c 0 0 1
-## 12   chr1:27274625-27291670          1     c 0 0 1
-## 13   chr1:30961757-30982578          1     c 0 0 1
-## 14   chr1:84542538-84575354          1     c 0 0 1
-## 15   chr1:86755768-86769494          1     c 0 0 1
-## 16   chr1:96654240-96673871          1     c 0 0 1
-## 17 chr1:111847207-111870328          1     c 0 0 1
-## 18 chr1:137384755-137405576          1     c 0 0 1
-## 19 chr1:188578584-188601168          1     c 0 0 1
-## 20 chr1:205864030-205884665          1     c 0 0 1
-## 21 chr1:217035701-217059704          1     c 0 0 1
-## 22 chr1:217772331-217789376          1     c 0 0 1
-## 23 chr1:230374115-230391160          1     c 0 0 1
+## 9      chr1:1798943-1824630          1     c 0 0 1
+## 10   chr1:43953622-43979387          1     c 0 0 1
+## 11   chr1:73631468-73649769          1     c 0 0 1
+## 12   chr1:81567462-81589764          1     c 0 0 1
+## 13   chr1:98699648-98729421          1     c 0 0 1
+## 14 chr1:112646587-112677646          1     c 0 0 1
+## 15 chr1:114050371-114078690          1     c 0 0 1
+## 16 chr1:124435699-124464018          1     c 0 0 1
+## 17 chr1:128940582-128962412          1     c 0 0 1
+## 18 chr1:133265158-133290923          1     c 0 0 1
+## 19 chr1:166036766-166061144          1     c 0 0 1
+## 20 chr1:169832353-169859402          1     c 0 0 1
+## 21 chr1:190056539-190078841          1     c 0 0 1
+## 22 chr1:227095789-227114090          1     c 0 0 1
+## 23 chr1:231495917-231514218          1     c 0 0 1
 ## 24             chr10:50-100          1     a 1 0 0
 ## 25            chr10:100-150          1     b 0 1 0
 ## 26                 chr2:1-5          1     b 0 1 0
@@ -636,7 +658,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools jaccard -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e665c45a8.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e5b7401cb.bed -f 1e-09
+##    bedtools jaccard -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5904ad323fc.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5903ad48a81.bed -f 1e-09
 ## RELATIVE DISTANCE
 ##  * Processing input (1): a
 ## CONVERT TO BED
@@ -665,7 +687,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools reldist -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e23c125c5.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704eef08abd.bed 
+##    bedtools reldist -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b59039e2e689.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5905be5b398.bed 
 ##  JACCARD a &amp; b: 
 ##     intersection union-intersection  jaccard n_intersections
 ## 120          120                420 0.285714               3
@@ -713,7 +735,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## CONVERT TO BED
 ##  * Checking input type... PASS
 ##    Input is in bed format
-##    bedtools jaccard -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e5376262e.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e71c4c0d0.bed -f 1e-09
+##    bedtools jaccard -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5904f149447.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5905012e9e0.bed -f 1e-09
 ## RELATIVE DISTANCE
 ##  * Processing input (1): a
 ## CONVERT TO BED
@@ -723,7 +745,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## CONVERT TO BED
 ##  * Checking input type... PASS
 ##    Input is in bed format
-##    bedtools reldist -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e2c4ed20a.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e6abfa53f.bed 
+##    bedtools reldist -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5909b89a32.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b59036934d9a.bed 
 ## PERMUTATION TEST
 ##  JACCARD/RELDIST a &amp; b: 
 ## $results
@@ -805,7 +827,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e14bbd083.bed -g 1,2,3 -c 4 -o collapse
+##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b5906b84604d.bed -g 1,2,3 -c 4 -o collapse
 ##  * Processing input (1): i
 ## CONVERT TO BED
 ##  * Checking input type... PASS
@@ -824,7 +846,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e9b5ff1.bed -g 1,2,3 -c 4 -o mean
+##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b5901c31edf1.bed -g 1,2,3 -c 4 -o mean
 ##  REGION a groupby (collapsed): 
 ##              a.CHROM a.START a.END          Score
 ## chr1:10-100     chr1      10   100 98.1,92.7,87.1
@@ -951,7 +973,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  * Check if zero based... PASS
 ##  * Checking sort order... PASS
 ##  * Checking for overlapping 'contiguous' regions... PASS
-##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e39200b4b.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e5186f7ff.bed -wo -sorted
+##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5901b9995e.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b590cddd562.bed -wo -sorted
 ##  OVERLAPPING PAIRS: 
 ##   a.CHROM     a.POS     a.END b.CHROM     b.POS     b.END Overlap distance
 ## 1       1 247204800 247209976       1 247205240 247209984    4736    220.0
@@ -1049,7 +1071,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e410f96ca.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704e5b159676.bed -wo -sorted
+##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b5902cc427e.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b59066003a7a.bed -wo -sorted
 ## JOINING
 ##  * Processing input (1): a
 ## CONVERT TO BED
@@ -1081,7 +1103,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/a_704e4990b6bb.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/b_704edb3a1cc.bed -wo -sorted
+##    bedtools intersect -a /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/a_b59077c41356.bed -b /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/b_b5902f2b1675.bed -wo -sorted
 ##  CALLER A GENES (chr 1,2): 
 ##   a.CHROM    a.POS    a.END Gene.CHROM Gene.POS Gene.END         Gene
 ## 1    chr1 32176186 32193834          1 32192705 32229664 NM_001294336
@@ -1155,7 +1177,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e4e92e218.bed -g 1,2,3 -c 7 -o collapse
+##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b5903a7a68c8.bed -g 1,2,3 -c 7 -o collapse
 ##  * Processing input (1): i
 ## CONVERT TO BED
 ##  * Checking input type... PASS
@@ -1174,7 +1196,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    The input for object has overlapping features!
 ##    This can cause unexpected results for some set operations.
 ##    i.e. x &lt;- bedr.merge.region(x)
-##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpiU5tw5/i_704e24f0b004.bed -g 1,2,3 -c 7 -o collapse
+##    bedtools groupby -i /var/folders/ch/h71q7lwx2wdb07ry2mlp337r000k4d/T//RtmpXZAvzT/i_b5906350ea17.bed -g 1,2,3 -c 7 -o collapse
 ##  CALLER A GENES (chr 1,2) GROUPED: 
 ##                          V1       V2       V3                        V4
 ## chr1:32176186-32193834 chr1 32176186 32193834 NM_001294336,NM_001294335

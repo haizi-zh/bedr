@@ -1,6 +1,6 @@
-9704df2e11bab7c65bba96091926d858 *DESCRIPTION
+063d1be7a13ed59eacae9462a05d8cbb *DESCRIPTION
 0a3b9b05103d16fbdd778714fed21471 *NAMESPACE
-00b74267bfc2a473e9c02c5f9655693f *NEWS
+e4dfa69bc7ccc29d83afdad261298133 *NEWS
 13eb7a490a5aa1b160a91f4258f27275 *R/bed2index.R
 4313784e41b22831997fa26155365e88 *R/bed2vcf.R
 31a0bae48ca2cbdb72d8aa4f5fa0e125 *R/bedr.R
@@ -44,16 +44,16 @@ f9092a2ee436c430df8cdc35227baaa2 *R/order.region.R
 1ff2cb13175276d3fe469ab38f6a03eb *R/reldist.R
 0bc53afd954969a3bd3725b3563ab29e *R/size.region.R
 3369364eafd7663a9c630ea07712a295 *R/strsplit2matrix.R
-414992eb2c91aa33b6c1b26a32314ac6 *R/tabix.R
+4e48cac55cb87707b7d8a68db43c99ac *R/tabix.R
 1257a7e41c993fae4da8c56fd0911ed6 *R/table2venn.R
 47667840f33a9676f3716ed778c4c3d8 *R/test.region.similarity.R
 6b0a3151ccd2bbfa514402b25d03e701 *R/vcf2bed.R
 fb41d9e70eb084287c61ad680deeb630 *R/write.vcf.R
-fbac743c0899f6a52194401f101d82cf *build/vignette.rds
+713f1ae1abe579869c8735c40884310a *build/vignette.rds
 c378a36f225925bcf366025e613b8344 *inst/config/config.yaml
 9bd371d79a527c64831a11c394e2dbde *inst/doc/Using-bedr.R
 77ff0a95aca9692ced1c6a8a97253eb4 *inst/doc/Using-bedr.Rmd
-4b041874de44bf399e2b0ddd24447df4 *inst/doc/Using-bedr.html
+7eae46ff2b8364e1fcaa087f4f21077b *inst/doc/Using-bedr.html
 397208cec943e7911287c9b16aa725c9 *inst/extdata/CNA.segmented.txt.gz
 f1a680480eea1bfe29aabaaec9feb0f7 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz
 4f5c3acf2bd8aaa6ce8bd3e6039dcf10 *inst/extdata/CosmicCodingMuts_v66_20130725_ex.vcf.gz.tbi
@@ -107,7 +107,7 @@ c5b5831ce77f1ccf521313037be1b2cc *man/determine.input.Rd
 796cce8dddcb466c620c985f3d6809b7 *man/df2list.Rd
 c08480abb1c8668e31082697a7f0cfbf *man/download.datasets.Rd
 6f59f6222a6e41731e0af5bb28aba97b *man/flank.region.Rd
-d2129ac26b067b2569ce6e080c423c7a *man/get.chr.length.Rd
+5380557080b60c6389e4844426bbfaef *man/get.chr.length.Rd
 4b1e0518782e855c70744c3a006d2305 *man/get.example.regions.Rd
 119d4b034bf0ef7c53d4837d6fc02ab6 *man/get.fasta.Rd
 7add1c74378d7e4bf616872bedd661c3 *man/get.random.regions.Rd

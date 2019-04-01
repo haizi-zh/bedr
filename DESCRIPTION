@@ -2,17 +2,17 @@ Package: bedr
 Type: Package
 Title: Genomic Region Processing using Tools Such as 'BEDTools',
         'BEDOPS' and 'Tabix'
-Version: 1.0.6
-Date: 2019-01-12
+Version: 1.0.7
+Date: 2019-04-01
 Authors@R: c(
-  person("Daryl", "Waggott", role = "aut"),
   person("Syed", "Haider", role = "aut"),
+  person("Daryl", "Waggott", role = "aut"),
   person("Emilie", "Lalonde", role = "ctb"),
   person("Clement", "Fung", role = "ctb"),
   person("Paul", "C. Boutros", role = c("aut", "cre", "cph"), email = "pboutros@mednet.ucla.edu")
   )
-Author: Daryl Waggott [aut],
-  Syed Haider [aut],
+Author: Syed Haider [aut],
+  Daryl Waggott [aut],
   Emilie Lalonde [ctb],
   Clement Fung [ctb],
   Paul C. Boutros [aut, cre, cph]
@@ -29,6 +29,6 @@ License: GPL-2
 Imports: testthat (>= 0.7.1), VennDiagram (>= 1.6.4), data.table (>=
         1.8.11), R.utils (>= 2.0.2), yaml (>= 2.1.10), parallel, grid
 NeedsCompilation: no
-Packaged: 2019-01-12 22:02:00 UTC; shaider
+Packaged: 2019-04-01 18:15:47 UTC; shaider
 Repository: CRAN
-Date/Publication: 2019-01-12 23:32:33 UTC
+Date/Publication: 2019-04-01 18:50:02 UTC

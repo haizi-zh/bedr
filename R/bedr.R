@@ -184,7 +184,8 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 				b.colnames <- gsub("chr", "chr.b", b.colnames);
 				b.colnames <- gsub("start", "start.b", b.colnames);
 				b.colnames <- gsub("end", "end.b", b.colnames);
-				colnames(output)[(length(a.colnames)+1):(length(a.colnames)+length(b.colnames))] <- b.colnames;
+				if (length(colnames(output)) == length(a.colnames) + length(b.colnames))
+					colnames(output)[(length(a.colnames)+1):(length(a.colnames)+length(b.colnames))] <- b.colnames;
 				}
 			else {
 				#b.col.start <- ;

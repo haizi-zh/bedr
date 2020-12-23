@@ -9,7 +9,7 @@
 # If publications result from research using this SOFTWARE, we ask that the Ontario Institute for Cancer Research be acknowledged and/or
 # credit be given to OICR scientists, as scientifically appropriate.
 
-bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NULL, tmpDir = NULL, deleteTmpDir = TRUE, outputDir = NULL, outputFile = NULL, check.chr = TRUE, check.zero.based = TRUE, check.valid = TRUE, check.sort = TRUE, check.merge = TRUE, verbose = TRUE) {
+bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NULL, tmpDir = NULL, deleteTmpDir = TRUE, outputDir = NULL, outputFile = NULL, check.chr = TRUE, check.zero.based = TRUE, check.valid = TRUE, check.sort = TRUE, check.merge = TRUE, verbose = TRUE, capture.output = "memory") {
 
 	# default parameters
 	if (is.null(params)) params <- "";
@@ -61,7 +61,19 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 
 	# capture output R object or send to a file
 	if (is.null(outputFile)) {
-		output <- try(system(command , wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE));
+		if (capture.output == "memory") {
+			output <- try(system(command, wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE))
+		} else {
+			tmpDir <- ifelse(is.null(tmpDir), tempdir(), tmpDir)
+			tmpFile <- tempfile(tmpdir = tmpDir, fileext = ".bed")
+			catv(paste0("Writing output to temporary location: ", tmpFile))
+			command <- paste(command, " > ", tmpFile)
+			intern <- FALSE
+			status <- try(system(command, wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE))
+			output <- as.data.frame(fread(tmpFile, header = FALSE))
+			file.remove(tmpFile)
+			attr(output, "status") <- status
+			}
 		}
 	else {
 		if (is.null(outputDir)) outputDir <- getwd();

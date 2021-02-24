@@ -13,7 +13,7 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 	# return queried regions
 
 	catv("TABIX-QUERY\n")
-	
+
 	# check binary is in path
 	if(!check.binary("tabix", verbose = FALSE)) {
 		catv(paste0("bedr: missing binary/executable tabix"));
@@ -32,32 +32,47 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 	if (!has.index) {
 		catv("   ERROR: Tabix requires and index");
 		stop();
-		}
-	
-	# parse indices and create temp files
-	region.file <- process.input(region, tmpDir = tmpDir, check.zero.based = check.zero.based, check.chr = check.chr, check.valid = check.valid, check.sort = check.sort, check.merge = check.merge, verbose = verbose);
+	}
+
+	# tabix supports two index styles: chr12:1000-2000, or simply chr12, which
+	# indicates the whole chromosome of chr12
+	# is_whole_chr <- grepl("^[^:]+$", region)
+	is_whole_chr <- TRUE #grepl("^[^:]+$", region)
 
 	tabix.output <- NULL;
 
-	# -B is deprecated by tabix after release v1.1 and replaced with -R switch below
-	# params <- paste(params, "-B");
+	if (!is_whole_chr) {
+	  # parse indices and create temp files
+	  region.file <- process.input(region, tmpDir = tmpDir, check.zero.based = check.zero.based, check.chr = check.chr, check.valid = check.valid, check.sort = check.sort, check.merge = check.merge, verbose = verbose);
 
-	command <- paste("bash -c 'tabix", params, file.name, "-R", region.file[[1]], "'");
-	
+	  # -B is deprecated by tabix after release v1.1 and replaced with -R switch below
+	  # params <- paste(params, "-B");
+	  command <- paste("bash -c 'tabix", params, file.name, "-R", region.file[[1]], "'");
+	} else{
+	  # Don't use BED-format region files
+	  command <- paste("bash -c 'tabix", params, file.name, paste(region, collapse = " "), "'");
+	}
+
+
+
 	# print the command
 	catv(paste0("\n", command,"\n"));
 	header       <- try(system(paste0("bash -c 'tabix -H ", file.name, "'"), wait = TRUE, intern = TRUE, ignore.stdout = FALSE, ignore.stderr = FALSE));
 	tabix.output <- try(system(command , wait = TRUE, intern = TRUE, ignore.stdout = FALSE, ignore.stderr = FALSE));
-	
+
 	# check for output
 	if ((!is.null(attr(tabix.output,"status")) && attr(tabix.output,"status") == 1)) {
 		catv(paste("    Head of region...\n"));
-		if (attr(region.file[[1]], "is.file")) {
-			system(paste("head ", region.file[[1]]));
-			}
-		else {
-			head(region.file[[1]]);
-			}
+	  if (is_whole_chr){
+	    catv(paste(head(region, n = 10), collapse = "\n"))
+	  } else {
+	    if (attr(region.file[[1]], "is.file")) {
+	      system(paste("head ", region.file[[1]]));
+	    }
+	    else {
+	      head(region.file[[1]]);
+	    }
+	  }
 		try(system("tabix --help"));
 		catv(paste0("   ERROR: Looks like tabix had a problem"));
 		stop();
@@ -106,13 +121,15 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 		tabix.output[,8] <- as.numeric(tabix.output[,8]); # pos
 		tabix.output[,9] <- as.numeric(tabix.output[,9]); # pos
 		}
-	
-	# only delete tmp files if they exist
-	region.file <- Filter(function(x){grepl("Rtmp",x)}, region.file);
 
-	if (length(region.file) != 0 && all(region.file != "" && deleteTmpDir == TRUE)) {
-		file.remove(unlist(region.file));
-		}
+	if (!is_whole_chr) {
+	  # only delete tmp files if they exist
+	  region.file <- Filter(function(x){grepl("Rtmp",x)}, region.file);
+
+	  if (length(region.file) != 0 && all(region.file != "" && deleteTmpDir == TRUE)) {
+	    file.remove(unlist(region.file));
+	  }
+	}
 
 	return(tabix.output)
 	}

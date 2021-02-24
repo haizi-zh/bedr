@@ -21,7 +21,7 @@ index2bed <- function(x, set.type = TRUE) {
 
 	# add the colnames
 	colnames(index) <- c("chr","start","end");
-	index$start     <- suppressWarnings(as.numeric(index$start));
+	index$start     <- suppressWarnings(as.numeric(index$start) - 1);
 	index$end       <- suppressWarnings(as.numeric(index$end));
 
 	if (set.type) attr(x, "input.type") <- 1;

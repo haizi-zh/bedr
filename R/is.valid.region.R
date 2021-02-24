@@ -37,7 +37,10 @@ is.valid.region <- function(x, check.zero.based = TRUE, check.chr = TRUE, throw.
 
 		old.scipen <- getOption("scipen");
 		options(scipen = 999);
-		x <- paste0(x[,1],":",x[,2],"-",x[,3]);
+		# Note that the input is a bed-format data.frame, which by convention is
+		# zero-based, but here we want to extract the index information, which is
+		# a one-based, inclusive character vector.
+		x <- paste0(x[, 1], ":", x[, 2] + 1, "-", x[, 3])
 		options(scipen = old.scipen);
 
 		}

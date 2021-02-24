@@ -21,6 +21,9 @@ convert2bed <- function(x, set.type = TRUE, check.zero.based = TRUE, check.chr =
 		x <- index2bed(x, set.type = set.type);
 		}
 	else if (input.type == 1) {
+	  # When the input is a tibble instead of a data.frame, we need to explicitly
+	  # convert it into data.frame, otherwise is.valid.region won't work properly
+	  x <- as.data.frame(x)
 		colnames(x)[1:3] <- c("chr","start","end");
 		}
 	else if (input.type == 2) {

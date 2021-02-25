@@ -36,8 +36,13 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 
 	# tabix supports two index styles: chr12:1000-2000, or simply chr12, which
 	# indicates the whole chromosome of chr12
-	# is_whole_chr <- grepl("^[^:]+$", region)
-	is_whole_chr <- TRUE #grepl("^[^:]+$", region)
+	is_whole_chr <- unique(grepl("^[^:]+$", region))
+
+	# Simply not allow mixed chromosome-wide and UCSC genomic range notations
+	if (length(is_whole_chr) != 1) {
+		catv("   ERROR: Not allow mixed chromosome-wide and UCSC genomic range notations")
+	  stop()
+	}
 
 	tabix.output <- NULL;
 
@@ -52,8 +57,6 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 	  # Don't use BED-format region files
 	  command <- paste("bash -c 'tabix", params, file.name, paste(region, collapse = " "), "'");
 	}
-
-
 
 	# print the command
 	catv(paste0("\n", command,"\n"));

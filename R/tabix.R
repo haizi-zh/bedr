@@ -36,17 +36,11 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 
 	# tabix supports two index styles: chr12:1000-2000, or simply chr12, which
 	# indicates the whole chromosome of chr12
-	is_whole_chr <- unique(grepl("^[^:]+$", region))
-
-	# Simply not allow mixed chromosome-wide and UCSC genomic range notations
-	if (length(is_whole_chr) != 1) {
-		catv("   ERROR: Not allow mixed chromosome-wide and UCSC genomic range notations")
-	  stop()
-	}
+	is_whole_chr <- grepl("^[^:]+$", region)
 
 	tabix.output <- NULL;
 
-	if (!is_whole_chr) {
+	if (all(!is_whole_chr)) {
 	  # parse indices and create temp files
 	  region.file <- process.input(region, tmpDir = tmpDir, check.zero.based = check.zero.based, check.chr = check.chr, check.valid = check.valid, check.sort = check.sort, check.merge = check.merge, verbose = verbose);
 
@@ -66,7 +60,7 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 	# check for output
 	if ((!is.null(attr(tabix.output,"status")) && attr(tabix.output,"status") == 1)) {
 		catv(paste("    Head of region...\n"));
-	  if (is_whole_chr){
+	  if (any(is_whole_chr)) {
 	    catv(paste(head(region, n = 10), collapse = "\n"))
 	  } else {
 	    if (attr(region.file[[1]], "is.file")) {
@@ -125,7 +119,7 @@ tabix <- function(region, file.name, params = NULL, tmpDir = NULL, deleteTmpDir 
 		tabix.output[,9] <- as.numeric(tabix.output[,9]); # pos
 		}
 
-	if (!is_whole_chr) {
+	if (all(!is_whole_chr)) {
 	  # only delete tmp files if they exist
 	  region.file <- Filter(function(x){grepl("Rtmp",x)}, region.file);
 

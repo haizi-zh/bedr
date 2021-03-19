@@ -36,6 +36,15 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 		input.files <- process.input(input, tmpDir = tmpDir, check.zero.based = check.zero.based, check.chr = check.chr, check.valid = check.valid, check.sort = check.sort, check.merge = check.merge, verbose = verbose);
 		}
 
+	on.exit({
+		# only delete tmp files if they exist
+		input.files <- Filter(function(x){grepl("Rtmp",x)}, input.files);
+
+		if (length(input.files) != 0 && all(input.files != "" && deleteTmpDir == TRUE)) {
+			file.remove(unlist(input.files));
+			}
+	}, add = TRUE)
+
 	# do not capture output if help requested
 	intern  <- ifelse(grepl("help", params), FALSE, TRUE);
 
@@ -63,18 +72,21 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 	if (is.null(outputFile)) {
 		if (capture.output == "memory") {
 			output <- try(system(command, wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE))
-		} else {
+		} else if (capture.output == "disk") {	
 			tmpDir <- ifelse(is.null(tmpDir), tempdir(), tmpDir)
 			tmpFile <- tempfile(tmpdir = tmpDir, fileext = ".bed")
+			on.exit(file.remove(tmpFile), add = TRUE)
 			catv(paste0("Writing output to temporary location: ", tmpFile))
 			command <- paste(command, " > ", tmpFile)
 			intern <- FALSE
 			status <- try(system(command, wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE))
-			output <- as.data.frame(fread(tmpFile, header = FALSE))
-			file.remove(tmpFile)
+			output <- as.data.frame(fread(tmpFile, header = FALSE, na.strings = c("NA", "na", "NaN", "nan", ".", "")))
+			# file.remove(tmpFile)
 			attr(output, "status") <- status
-			}
+		} else {
+			stop(paste0("Invalid cature.output: ", capture.output))
 		}
+	}
 	else {
 		if (is.null(outputDir)) outputDir <- getwd();
 		if (grepl("/", outputFile)) outputDir <- NULL;
@@ -208,12 +220,12 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 	else {
 		}
 
-	# only delete tmp files if they exist
-	input.files <- Filter(function(x){grepl("Rtmp",x)}, input.files);
+	# # only delete tmp files if they exist
+	# input.files <- Filter(function(x){grepl("Rtmp",x)}, input.files);
 
-	if (length(input.files) != 0 && all(input.files != "" && deleteTmpDir == TRUE)) {
-		file.remove(unlist(input.files));
-		}
+	# if (length(input.files) != 0 && all(input.files != "" && deleteTmpDir == TRUE)) {
+	# 	file.remove(unlist(input.files));
+	# 	}
 
 	return(output);
 	}

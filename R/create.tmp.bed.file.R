@@ -16,7 +16,7 @@ create.tmp.bed.file <- function(x, name = "bedr", tmpDir = NULL) {
 	tmpDir         <- ifelse (is.null(tmpDir), tempdir(), tmpDir);
 	file.x         <- tempfile(pattern = paste(name, "_", sep = ""), tmpdir = tmpDir, fileext = ".bed");
 	colnames(x)[1] <- paste("#",colnames(x)[1], sep="");
-	write.table(x, file.x, quote = FALSE, row.names = FALSE, sep = "\t", col.names = FALSE);
+	data.table::fwrite(x, file = file.x, sep = "\t", row.names = FALSE, col.names = FALSE);
 
 	options(scipen = old.scipen)
 	attr(file.x,"is.index") <- attr(x,"is.index");

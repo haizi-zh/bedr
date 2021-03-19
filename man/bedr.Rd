@@ -21,7 +21,8 @@ bedr(engine = "bedtools",
 	check.valid = TRUE,
 	check.sort = TRUE,
 	check.merge = TRUE,
-	verbose = TRUE
+	verbose = TRUE,
+	capture.output = "memory",
 	);
 
 }
@@ -41,6 +42,7 @@ bedr(engine = "bedtools",
   \item{check.sort}{check if region is sorted}
   \item{check.merge}{check if region is  merged}
   \item{verbose}{Should messages be printed to screen.}
+  \item{capture.output}{Indicate how to perform the communication with bedr/bedops. The default is `memory`, meaning that results are captured directly through stdout. `disk` means using temporary files for data communication.}
 }
 %\details{
 %}

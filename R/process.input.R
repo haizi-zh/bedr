@@ -12,7 +12,7 @@
 process.input <- function(input, tmpDir = NULL, include.names = TRUE, check.zero.based = TRUE, check.chr = TRUE, check.valid = TRUE, check.sort = TRUE, check.merge = TRUE, verbose = TRUE) {
 # takes list of input and creates tmp files for input and returns string of paths
 
-	file.extensions <- c("bed", "vcf", "gff", "bam", "sam", "csv", "tsv", "txt", "gz")
+	file.extensions <- c("bed", "bedGraph", "vcf", "gff", "bam", "sam", "csv", "tsv", "txt", "gz")
 	input.files   <- list();
 
 	if (is.vector(input, mode = "character") || is.data.frame(input)) {

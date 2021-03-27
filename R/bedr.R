@@ -72,7 +72,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 	if (is.null(outputFile)) {
 		if (capture.output == "memory") {
 			output <- try(system(command, wait = TRUE, intern = intern, ignore.stdout = FALSE, ignore.stderr = FALSE))
-		} else if (capture.output == "disk") {	
+		} else if (capture.output == "disk") {
 			tmpDir <- ifelse(is.null(tmpDir), tempdir(), tmpDir)
 			tmpFile <- tempfile(tmpdir = tmpDir, fileext = ".bed")
 			on.exit(file.remove(tmpFile), add = TRUE)
@@ -119,7 +119,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 
 	### everything below here needs to be reviewed ###
 
-	# format output as a data frame (if appropriate) 
+	# format output as a data frame (if appropriate)
 	if (length(output) == 0) {
 		# empty case
 		output <- data.frame(output = NULL);
@@ -139,7 +139,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 		ncol.output <- 0;
 		}
 
-	# set the header for a few 
+	# set the header for a few
 	if (ncol.output >= 3 && method %in% c("jaccard", "reldist") && !grepl("detail", params)) {
 		# delete the header
 		colnames(output) <- output[1,];
@@ -153,7 +153,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 
 		chr.column  <- which(grepl("chr", output[1,]))[1];
 		if (is.na(chr.column)) {chr.column <- 1}
-	
+
 		old.scipen <- getOption("scipen")
 		options(scipen = 999);
 		new.index   <- paste(output[,chr.column],":", as.integer(output[,chr.column+1]), "-", as.integer(output[,chr.column+2]), sep="");
@@ -169,7 +169,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 	# add back the index if it was used as input
 	if (ncol.output == 3 && attr(input.files[[1]], "is.index")) {
 		# replace output with index if input was index
-		output <- new.index;	
+		output <- new.index;
 		}
 	else if (ncol.output > 3 && attr(input.files[[1]], "is.index") && !method %in% c("jaccard","reldist")) {
 		# if index specifed delete added chr, start, stop
@@ -203,7 +203,7 @@ bedr <- function(engine = "bedtools", params = NULL, input = list(), method = NU
 				colnames(output)[1:3] <- c("chr","start", "end");
 				}
 
-			if (!attr(input.files[[2]], "is.file") & !attr(input.files[[2]], "is.index")) {
+			if (!attr(input.files[[2]], "is.file") & !attr(input.files[[2]], "is.index") & !is.null(get0("a.colnames"))) {
 				b.colnames <- c(colnames(input[[2]]));
 				b.colnames <- gsub("chr", "chr.b", b.colnames);
 				b.colnames <- gsub("start", "start.b", b.colnames);
